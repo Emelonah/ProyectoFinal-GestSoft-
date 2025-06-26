@@ -7,11 +7,14 @@ public class Articulo {
     private double precio;
     private boolean isDevuelto;
 
-    public Articulo(String nombre, String categoria, String idArticulo, double precio) {
+    public Articulo(String nombre, String categoria, String idArticulo, double precio) throws IllegalArgumentException{
+
         this.nombre = nombre;
         this.categoria = categoria;
         this.idArticulo = idArticulo;
-        this.precio = precio;
+        if (precio > 0 )
+            this.precio = precio;
+        else throw new IllegalArgumentException("Precio inválido");
         this.isDevuelto = false;
     }
 

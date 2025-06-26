@@ -6,11 +6,13 @@ public class Devolucion {
     private int cantidadDevuelta;
     private String fechaDevolucion;
 
-    public Devolucion(Venta v, String idDevolucion, int cantidadDevuelta, String fechaDevolucion) {
+    public Devolucion(Venta v, String idDevolucion, int cantidadDevuelta, String fechaDevolucion) throws IllegalArgumentException{
+        
         this.v = v;
         this.idDevolucion = idDevolucion;
         if (cantidadDevuelta <= v.getCantVenta())
             this.cantidadDevuelta = cantidadDevuelta;
+        else throw new IllegalArgumentException("Cantidad inválida");
         v.getA().setIsDevuelto(true);
         this.fechaDevolucion = fechaDevolucion;
     }
