@@ -3,14 +3,18 @@ package proyectofinal;
 import java.util.ArrayList;
 
 public class Venta {
-    private String idVanta;
+    private String idVenta;
     private int cantVenta;
     private double totalVenta;
     private Articulo a;
     private String fechaVenta; 
-    public Venta(Articulo a, String idVanta, int cantVenta, String fechaVenta) {
-        this.idVanta = idVanta;
-        this.cantVenta = cantVenta;
+    
+    
+    public Venta(Articulo a, String idVenta, int cantVenta, String fechaVenta) throws IllegalArgumentException{
+       if(cantVenta<=0)
+           throw new IllegalArgumentException("Cantidad de venta invalida");
+       else this.cantVenta = cantVenta;
+        this.idVenta = idVenta;
         this.a = a;
         this.fechaVenta = fechaVenta;
         this.totalVenta = a.getPrecio()* this.cantVenta;
@@ -32,12 +36,12 @@ public class Venta {
         this.a = a;
     }
 
-    public String getIdVanta() {
-        return idVanta;
+    public String getIdVenta() {
+        return idVenta;
     }
 
-    public void setIdVanta(String idVanta) {
-        this.idVanta = idVanta;
+    public void setIdVenta(String idVenta) {
+        this.idVenta = idVenta;
     }
 
     public int getCantVenta() {
